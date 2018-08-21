@@ -5,6 +5,7 @@
  */
 package com.avbravo.tour;
 
+import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
@@ -14,5 +15,11 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("rest")
 public class ApplicationConfiguration extends Application{
-    
+     @Override
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> resources = new java.util.HashSet<>();
+        resources.add(com.avbravo.tour.PaisResources.class);
+        //addRestResourceClasses(resources);
+        return resources;
+    }
 }
