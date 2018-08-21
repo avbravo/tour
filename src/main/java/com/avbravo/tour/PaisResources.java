@@ -25,33 +25,31 @@ import org.bson.Document;
 @Stateless
 @Path("pais")
 public class PaisResources {
+
     @Inject
     PaisRepository paisRepository;
+
     @GET
     @Path("{idpais}")
-    @Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-    public Pais find(@PathParam("idpais") String idpais){
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Pais find(@PathParam("idpais") String idpais) {
         Pais pais = new Pais();
         try {
-//            List<Pais> l = paisRepository.findBy(new Document("idpais",idpais));
-//            if(!l.isEmpty()){
-//             pais =l.get(0);
-//            }
-pais.setIdpais(idpais);
-                        Optional<Pais> optional=paisRepository.findById(pais);
-           if(optional.isPresent()){
-               pais = optional.get();
-           }
-            
+            pais.setIdpais(idpais);
+            Optional<Pais> optional = paisRepository.findById(pais);
+            if (optional.isPresent()) {
+                pais = optional.get();
+            }
+
         } catch (Exception e) {
-            System.out.println("Error find() "+e.getLocalizedMessage());
+            System.out.println("Error find() " + e.getLocalizedMessage());
         }
         return pais;
     }
-    
+
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Pais> findAll(){        
+    public List<Pais> findAll() {
         return paisRepository.findAll();
     }
 }
