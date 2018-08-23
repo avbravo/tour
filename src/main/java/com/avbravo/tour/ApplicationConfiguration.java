@@ -19,6 +19,8 @@ public class ApplicationConfiguration extends Application{
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(com.avbravo.tour.PaisResources.class);
+        resources.add(com.avbravo.tour.HolaMundoResource.class);
+        resources.add(com.avbravo.tour.TamanoResource.class);
         //addRestResourceClasses(resources);
         return resources;
     }
